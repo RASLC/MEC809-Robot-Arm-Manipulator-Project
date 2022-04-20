@@ -74,12 +74,10 @@ void loop()
   bool touch_status;
   bool last_status;
 
-
   delay (1000);
   new_encoder3 = evshield.bank_b.motorGetEncoderPosition(SH_Motor_1); //motor for gripper
   new_encoder2 = evshield.bank_a.motorGetEncoderPosition(SH_Motor_2); //motor for vertical
   new_encoder1 = evshield.bank_a.motorGetEncoderPosition(SH_Motor_1); //motor for horizontal
-
 
   sprintf (str, "encoder values: 1) %ld, 2) %ld, 3) %ld", new_encoder1, new_encoder2, new_encoder3);
   Serial.println (str);
@@ -121,10 +119,6 @@ void loop()
           press_counter = 0;
           sprintf (str, "case 3 posA: 1) %ld, 2) %ld,  posB: 1) %ld, 2) %ld, ", posA1, posA2, posB1, posB2);
           Serial.println(str);
-
-          //opens gripper
-          //evshield.bank_b.motorRunDegrees(SH_Motor_1, SH_Direction_Reverse, motor_speed, 130, SH_Completion_Wait_For, SH_Next_Action_BrakeHold); //gripper motor opens
-          //delay(1000);
 
           //move upwards
           evshield.bank_a.motorRunDegrees(SH_Motor_2, SH_Direction_Forward, motor_speed, 60, SH_Completion_Wait_For, SH_Next_Action_Brake); //vertical motor
@@ -174,7 +168,5 @@ void loop()
       }
     }
     last_status = touch_status;
-
-
   }
 }
